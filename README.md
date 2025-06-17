@@ -176,7 +176,3 @@ nuclei -u https://ejemplo.com -t ~/nuclei-templates/
 * Módulo adicional en Rust o Go para detección ultra rápida de servicios
 
 ---
-
-## 🤝 Créditos
-
-Desarrollado por \[Tu Nombre] como parte de una suite de herramientas para pruebas de penetración y evaluación de seguridad web. Inspirado por la necesidad de automatizar tareas repetitivas sin depender de soluciones comerciales.
