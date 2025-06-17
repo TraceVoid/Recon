@@ -135,7 +135,10 @@ brew install graphviz
 # Windows (Chocolatey)
 choco install graphviz
 ```
-
+### Instalar las dependencias
+```bash
+sudo apt install  requirements.txt
+```
 Convertir a imagen:
 
 ```bash
@@ -158,7 +161,6 @@ nuclei -u https://ejemplo.com -t ~/nuclei-templates/
 
 ## 🚨 Advertencias Importantes
 
-* ⚠️ **Solo usar en sistemas con autorización explícita.**
 * 🐢 Hilos altos (`-t`) pueden saturar servidores mal configurados.
 * 🔍 Pruebas profundas (`-d > 2`) pueden consumir mucho tiempo.
 * 📈 Si el sitio es muy grande, considera un escaneo por secciones.
