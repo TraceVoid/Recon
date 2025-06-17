@@ -1,3 +1,18 @@
+                                   _
+       /      \         __      _\( )/_
+    \  \  ,,  /  /   | /  \ |    /(O)\ 
+     '-.`\()/`.-'   \_\\  //_/    _.._   _\(o)/_  //  \\
+    .--_'(  )'_--.   .'/()\'.   .'    '.  /(_)\  _\\()//_
+   / /` /`""`\ `\ \   \\  //   /   __   \       / //  \\ \
+    |  |  ><  |  |          ,  |   ><   |  ,     | \__/ |
+    \  \      /  /         . \  \      /  / .              _
+   _    '.__.'    _\(O)/_   \_'--`(  )'--'_/     __     _\(_)/_
+_\( )/_            /(_)\      .--'/()\'--.    | /  \ |   /(O)\
+ /(O)\  //  \\         _     /  /` '' `\  \  \_\\  //_/
+       _\\()//_     _\(_)/_    |        |      //()\\ 
+      / //  \\ \     /(o)\      \      /       \\  //
+       | \__/ |
+
 # 🕷️ RECON SCRIPT - Crawler y Análisis de Vulnerabilidades Web
 
 Recon Script es una herramienta avanzada de reconocimiento web desarrollada en Python que combina funciones de crawling profundo, fingerprinting, pruebas de vulnerabilidades y generación de reportes detallados. Pensada para profesionales en seguridad ofensiva, permite automatizar gran parte del reconocimiento pasivo y activo con un solo comando.
