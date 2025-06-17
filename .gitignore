@@ -1,0 +1,11 @@
+Escaneo_*/
+__pycache__/
+*.pyc
+*.log
+*.bak
+*.zip
+site_map.gv*
+.env
+venv/
+.vscode/
+.idea/
