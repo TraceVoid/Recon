@@ -47,6 +47,7 @@ python spider.py https://ejemplo.com [OPCIONES]
 | `-t`, `--threads` | Número de hilos para requests concurrentes (default: 5) | `-t 10`               |
 | `--no-nmap`       | Desactiva escaneo Nmap                                  | `--no-nmap`           |
 | `--no-nuclei`     | Desactiva escaneo con Nuclei                            | `--no-nuclei`         |
+| -o, --output      | Directorio de salida para los resultados                | `-o`                  |
 
 ---
 
