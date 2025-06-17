@@ -18,6 +18,12 @@ _\( )/_            /(_)\      .--'/()\'--.    | /  \ |   /(O)\
 
 Recon Script es una herramienta avanzada de reconocimiento web desarrollada en Python que combina funciones de crawling profundo, fingerprinting, pruebas de vulnerabilidades y generación de reportes detallados. Pensada para profesionales en seguridad ofensiva, permite automatizar gran parte del reconocimiento pasivo y activo con un solo comando.
 
+Lo puedes instalar con el siguiente comando
+```bash
+git clone https://github.com/TraceVoid/Recon
+cd Recon
+```
+
 ---
 
 ## 🔧 Modo de Uso Básico
