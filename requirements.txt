@@ -3,3 +3,4 @@ beautifulsoup4
 graphviz
 tqdm
 dnspython
+python-nmap
