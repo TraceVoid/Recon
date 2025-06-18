@@ -42,11 +42,12 @@ git clone https://github.com/TraceVoid/Recon
 cd Recon
 pip install -r requirements.txt
 
+```
 # Herramientas externas (opcional)
+```
 sudo apt install -y nmap
 go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 ```
-
 ## 🧼 Instalación Limpia y Comprobación
 
 ```bash
@@ -154,8 +155,6 @@ jq '.scan_results[].url' hallazgos.json
 # Archivos interesantes
 jq '.scan_results[] | select(.interesting_file == true)' hallazgos.json
 ```
-
----
 
 ---
 
