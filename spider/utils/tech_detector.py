@@ -1,5 +1,5 @@
 from typing import Dict, List
-from .models.scan_result import TechInfo
+from ..models.scan_result import TechInfo
 
 def detect_tech_from_headers(headers: Dict[str, str]) -> TechInfo:
     """Detect technologies from HTTP headers"""
