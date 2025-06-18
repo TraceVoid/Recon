@@ -47,6 +47,19 @@ sudo apt install -y nmap
 go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 ```
 
+## 🧼 Instalación Limpia y Comprobación
+
+```bash
+cd Recon/spider
+pip uninstall web-spider -y
+pip install .
+
+# Verificar comando
+webspider --help
+
+# Ejecución básica de prueba
+webspider http://testphp.vulnweb.com -d 1 --no-nmap
+```
 ---
 
 ## 🚀 Ejecución Básica
@@ -143,19 +156,6 @@ jq '.scan_results[] | select(.interesting_file == true)' hallazgos.json
 ```
 
 ---
-
-## 🧼 Instalación Limpia y Comprobación
-
-```bash
-pip uninstall web-spider -y
-pip install .
-
-# Verificar comando
-webspider --help
-
-# Ejecución básica de prueba
-webspider http://testphp.vulnweb.com -d 1 --no-nmap
-```
 
 ---
 
