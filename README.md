@@ -18,59 +18,63 @@ _\( )/_            /(_)\      .--'/()\'--.    | /  \ |   /(O)\
 
 Recon Script es una herramienta avanzada de reconocimiento web desarrollada en Python que combina funciones de crawling profundo, fingerprinting, pruebas de vulnerabilidades y generación de reportes detallados. Pensada para profesionales en seguridad ofensiva, permite automatizar gran parte del reconocimiento pasivo y activo con un solo comando.
 
-Lo puedes instalar con el siguiente comando
+---
+
+## 📦 Requisitos Previos
+
 ```bash
-git clone https://github.com/TraceVoid/Recon
-cd Recon
+# Linux (Debian/Ubuntu)
+sudo apt update && sudo apt install -y graphviz python3-pip
+
+# macOS
+brew install graphviz
+
+# Windows
+choco install graphviz
 ```
 
 ---
 
-## 🔧 Modo de Uso Básico
+## ⚙️ Instalación
+
+```bash
+git clone https://github.com/TraceVoid/Recon
+cd Recon
+pip install -r requirements.txt
+
+# Herramientas externas (opcional)
+sudo apt install -y nmap
+go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+```
+
+---
+
+## 🚀 Ejecución Básica
 
 ```bash
 python spider.py https://ejemplo.com
 ```
 
----
-
-## ⚙️ Opciones Avanzadas
-
-```bash
-python spider.py https://ejemplo.com [OPCIONES]
-```
-
-| Argumento         | Descripción                                             | Ejemplo               |
-| ----------------- | ------------------------------------------------------- | --------------------- |
-| URL (obligatorio) | URL objetivo para el reconocimiento                     | `https://ejemplo.com` |
-| `-d`, `--depth`   | Profundidad máxima del spider (default: 2)              | `-d 3`                |
-| `-t`, `--threads` | Número de hilos para requests concurrentes (default: 5) | `-t 10`               |
-| `--no-nmap`       | Desactiva escaneo Nmap                                  | `--no-nmap`           |
-| `--no-nuclei`     | Desactiva escaneo con Nuclei                            | `--no-nuclei`         |
-| -o, --output      | Directorio de salida para los resultados                | `-o`                  |
-
----
-
-## 📌 Ejemplos Prácticos
-
-### 1. Escaneo estándar:
+Opciones comunes:
 
 ```bash
 python spider.py https://ejemplo.com -d 2 -t 8
-```
-
-### 2. Escaneo rápido (sin Nmap y Nuclei):
-
-```bash
 python spider.py https://ejemplo.com --no-nmap --no-nuclei
+python spider.py https://ejemplo.com -d 3 -t 12 --output escaneo_completo
 ```
 
-### 3. Escaneo profundo:
+---
 
-```bash
-python spider.py https://ejemplo.com -d 3 -t 15
-```
+## 🛠️ Argumentos Avanzados
 
+| Argumento         | Descripción                                              | Ejemplo                |
+|-------------------|----------------------------------------------------------|------------------------|
+| `url`             | URL objetivo del análisis                                | `https://ejemplo.com`  |
+| `-d`, `--depth`   | Profundidad de crawling                                  | `-d 3`                 |
+| `-t`, `--threads` | Número de hilos concurrentes                             | `-t 10`                |
+| `--no-nmap`       | Desactiva el escaneo con Nmap                            | `--no-nmap`            |
+| `--no-nuclei`     | Desactiva el escaneo con Nuclei                          | `--no-nuclei`          |
+| `-o, --output`    | Directorio de salida para los resultados                 | `-o /ruta/archivo`     |
 ---
 
 ## 🔁 Flujo de Ejecución
@@ -105,83 +109,80 @@ python spider.py https://ejemplo.com -d 3 -t 15
    * Resultados JSON (`hallazgos.json`)
    * Mapa visual del sitio en `.gv` y `.pdf` (usando Graphviz)
    * Archivo Nmap con detalles de puertos y servicios
-
+   
 ---
 
-## 📁 Estructura de Salida
-
-Cada ejecución genera una carpeta automática:
+## 📁 Salida del Escaneo
 
 ```
 📂 Escaneo_YYYYMMDD_HHMMSS/
-├── hallazgos.json         → Resultados estructurados del reconocimiento
-├── site_map.gv            → Mapa del sitio en Graphviz
-├── site_map.gv.pdf        → Versión visual (si Graphviz está instalado)
-├── nmap_target.txt        → Resultado del escaneo Nmap (opcional)
+├── hallazgos.json         → Resultados estructurados
+├── site_map.gv/pdf        → Mapa visual del sitio
+├── nmap_target.txt        → Salida del escaneo Nmap (opcional)
+```
+
+Para generar un PNG:
+
+```bash
+dot -Tpng site_map.gv -o mapa_sitio.png
 ```
 
 ---
 
-## 🧠 Tips Avanzados
-
-### ▶️ Requisitos para el mapa visual:
+## 🧪 Análisis Rápido con `jq`
 
 ```bash
-# Linux
-sudo apt install graphviz
+# Vulnerabilidades detectadas
+jq '.scan_results[] | select(.nuclei_findings != [])' hallazgos.json
 
-# macOS
-brew install graphviz
+# URLs encontradas
+jq '.scan_results[].url' hallazgos.json
 
-# Windows (Chocolatey)
-choco install graphviz
-```
-### Instalar las dependencias
-```bash
-sudo apt install  requirements.txt
-```
-Convertir a imagen:
-
-```bash
-dot -Tpng site_map.gv -o mapa.png
-```
-
-### ⚠️ Nmap requiere privilegios:
-
-```bash
-sudo python spider.py https://ejemplo.com
-```
-
-### 🔎 Uso combinado con otras herramientas:
-
-```bash
-nuclei -u https://ejemplo.com -t ~/nuclei-templates/
+# Archivos interesantes
+jq '.scan_results[] | select(.interesting_file == true)' hallazgos.json
 ```
 
 ---
 
-## 🚨 Advertencias Importantes
+## 🧼 Instalación Limpia y Comprobación
 
-* 🐢 Hilos altos (`-t`) pueden saturar servidores mal configurados.
-* 🔍 Pruebas profundas (`-d > 2`) pueden consumir mucho tiempo.
-* 📈 Si el sitio es muy grande, considera un escaneo por secciones.
+```bash
+pip uninstall web-spider -y
+pip install .
+
+# Verificar comando
+webspider --help
+
+# Ejecución básica de prueba
+webspider http://testphp.vulnweb.com -d 1 --no-nmap
+```
 
 ---
 
-## 📦 Tecnologías utilizadas
+## 🔧 Problemas Comunes
 
-* **Python 3.8+**
-* `requests`, `bs4`, `graphviz`, `tqdm`, `argparse`, `concurrent.futures`
-* Herramientas externas: **Nmap**, **Nuclei**, **Graphviz**
+**Falta módulo o dependencia**:
+```bash
+pip install -r requirements.txt
+```
+
+**Mapa no generado**:
+```bash
+dot -V  # verificar instalación de graphviz
+```
+
+**Escaneo lento**:
+```bash
+webspider https://ejemplo.com -d 1 -t 3
+```
 
 ---
 
-## ✨ Pendientes / Ideas futuras
+## 🧩 Ideas Futuras
 
-* Interfaz web para visualizar hallazgos
-* Exportación a PDF/HTML de forma automática
-* Dashboards con JS o frameworks como Streamlit
-* Integración con Shodan / Censys
-* Módulo adicional en Rust o Go para detección ultra rápida de servicios
+- Interfaz visual con Streamlit
+- Exportación a HTML interactivo
+- Módulo rápido con Rust/Go
+- Integración con APIs externas como Shodan
 
 ---
