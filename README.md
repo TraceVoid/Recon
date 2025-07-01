@@ -61,13 +61,6 @@ webspider --help
 # Ejecución básica de prueba
 webspider http://testphp.vulnweb.com -d 1 --no-nmap
 ```
----
-
-## 🚀 Ejecución Básica
-
-```bash
-webspider https://ejemplo.com
-```
 
 ---
 
