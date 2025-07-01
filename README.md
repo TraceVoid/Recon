@@ -69,14 +69,6 @@ webspider http://testphp.vulnweb.com -d 1 --no-nmap
 webspider https://ejemplo.com
 ```
 
-Opciones comunes:
-
-```bash
-python spider.py https://ejemplo.com -d 2 -t 8
-python spider.py https://ejemplo.com --no-nmap --no-nuclei
-python spider.py https://ejemplo.com -d 3 -t 12 --output escaneo_completo
-```
-
 ---
 
 ## 🛠️ Argumentos Avanzados
