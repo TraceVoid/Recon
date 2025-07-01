@@ -40,8 +40,9 @@ choco install graphviz
 ```bash
 git clone https://github.com/TraceVoid/Recon
 cd Recon
+python3 -m venv myenv
+source myenv/bin/activate
 pip install -r requirements.txt
-
 ```
 # Herramientas externas (opcional)
 ```
